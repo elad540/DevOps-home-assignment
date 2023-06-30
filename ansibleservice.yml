@@ -1,0 +1,46 @@
+#---
+#- name: Install HashiCorp Consul and Nomad
+#  hosts: all
+#  become: true
+#
+#  tasks:
+#    - name: necessary tools
+#
+#    - name: Download the Consul binary
+#      get_url:
+#        url: "https://releases.hashicorp.com/consul/1.10.2/consul_1.10.2_linux_amd64.zip"
+#        dest: "/tmp/consul.zip"
+#
+#    - name: Unzip the Consul binary
+#      unarchive:
+#        src: "/tmp/consul.zip"
+#        dest: "/usr/local/bin"
+#        remote_src: yes
+#        extra_opts: [--strip-components=1]
+#      notify: Restart Consul
+#
+#    - name: Download the Nomad binary
+#      get_url:
+#        url: "https://releases.hashicorp.com/nomad/1.1.3/nomad_1.1.3_linux_amd64.zip"
+#        dest: "/tmp/nomad.zip"
+#
+#    - name: Unzip the Nomad binary
+#      unarchive:
+#        src: "/tmp/nomad.zip"
+#        dest: "/usr/local/bin"
+#        remote_src: yes
+#        extra_opts: [--strip-components=1]
+#      notify: Restart Nomad
+#
+#  handlers:
+#    - name: Restart Consul
+#      service:
+#        name: consul
+#        state: restarted
+#
+#    - name: Restart Nomad
+#      service:
+#        name: nomad
+#        state: restarted
+#
+## Run this: ansible-playbook -i inventory.ini service.yml
